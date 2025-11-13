@@ -22,10 +22,7 @@ builder.Services.AddCors(options =>
 });
 
 // Controllers with Exception Filter
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add<ConvertExceptionFilter>();
-});
+builder.Services.AddControllers(options => { options.Filters.Add<ConvertExceptionFilter>(); });
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -48,7 +45,7 @@ builder.Services.AddSwaggerGen(options =>
         Title = "Convert API - Kilograms to Pounds",
         Description = "An ASP.NET Core Web API for converting kilograms to pounds with scalable DDD architecture"
     });
-    
+
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     options.UseInlineDefinitionsForEnums();
@@ -64,7 +61,7 @@ if (app.Environment.IsDevelopment())
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Convert API v1");
         options.RoutePrefix = "swagger";
-        
+
         options.DocumentTitle = "Convert API Documentation";
         options.DisplayRequestDuration();
         options.EnableDeepLinking();
@@ -74,7 +71,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment()) 
+if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 
 app.UseCors("AllowAll");

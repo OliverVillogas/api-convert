@@ -1,7 +1,7 @@
 ﻿namespace ConvertAPI.Contexts.Converts.Domain.Model.ValueObjects;
 
 /// <summary>
-/// Value Object that encapsulates conversion logic
+///     Value Object that encapsulates conversion logic
 /// </summary>
 public record ConvertResult
 {

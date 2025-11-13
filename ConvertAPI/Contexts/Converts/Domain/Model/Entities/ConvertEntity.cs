@@ -5,7 +5,9 @@ namespace ConvertAPI.Contexts.Converts.Domain.Model.Entities;
 
 public class ConvertEntity : BaseEntity
 {
-    protected ConvertEntity() { }
+    protected ConvertEntity()
+    {
+    }
 
     public ConvertEntity(double kilograms)
     {

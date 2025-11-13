@@ -3,7 +3,7 @@ using ConvertAPI.Contexts.Shared.Domain.Repositories;
 
 namespace ConvertAPI.Contexts.Shared.Infrastructure.Repositories;
 
-public class BaseRepository<TEntity> : IBaseRepository<TEntity> 
+public class BaseRepository<TEntity> : IBaseRepository<TEntity>
     where TEntity : BaseEntity
 {
     protected readonly List<TEntity> _data = new();
@@ -32,7 +32,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity>
     {
         var entity = _data.FirstOrDefault(e => e.Id == id);
         if (entity == null) return Task.FromResult(false);
-        
+
         _data.Remove(entity);
         return Task.FromResult(true);
     }

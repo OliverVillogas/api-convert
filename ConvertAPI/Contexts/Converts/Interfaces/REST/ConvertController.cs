@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ConvertAPI.Contexts.Converts.Interfaces.REST;
 
 /// <summary>
-/// REST API for Kilograms to Pounds conversion
+///     REST API for Kilograms to Pounds conversion
 /// </summary>
 [ApiController]
 [Route("[controller]")]
@@ -17,14 +17,13 @@ public class ConvertController(
     IConvertQueryService queryService) : ControllerBase
 {
     /// <summary>
-    /// Converts kilograms to pounds
+    ///     Converts kilograms to pounds
     /// </summary>
     /// <remarks>
-    /// Example:
+    ///     Example:
     ///     POST /convert
     ///     { "kilograms": 10 }
-    ///     
-    /// Response:
+    ///     Response:
     ///     { "kilograms": 10, "pounds": 22.05 }
     /// </remarks>
     [HttpPost]
@@ -35,7 +34,7 @@ public class ConvertController(
         var command = ConvertResourceAssembler.ToCommandFromResource(resource);
         var convert = await commandService.Handle(command);
         var response = ConvertResourceAssembler.ToResourceFromEntity(convert);
-        
+
         return Ok(response);
     }
 }

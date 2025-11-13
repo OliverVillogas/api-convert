@@ -6,12 +6,11 @@ using ConvertAPI.Contexts.Converts.Domain.Services;
 
 namespace ConvertAPI.Contexts.Converts.Application.CommandServices;
 
-public class ConvertCommandService(IConvertRepository repository) 
+public class ConvertCommandService(IConvertRepository repository)
     : IConvertCommandService
 {
     public async Task<ConvertEntity> Handle(CreateConvertCommand command)
     {
-        
         if (command.Kilograms <= 0)
             throw new InvalidKilogramsException(command.Kilograms);
 

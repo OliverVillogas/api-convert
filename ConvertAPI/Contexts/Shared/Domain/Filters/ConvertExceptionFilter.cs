@@ -20,7 +20,8 @@ public class ConvertExceptionFilter : IExceptionFilter
         var (statusCode, message) = exception switch
         {
             InvalidKilogramsException => (StatusCodes.Status400BadRequest, exception.Message),
-            _ => (StatusCodes.Status500InternalServerError, "An internal server error occurred. Please contact support.")
+            _ => (StatusCodes.Status500InternalServerError,
+                "An internal server error occurred. Please contact support.")
         };
 
         if (statusCode == StatusCodes.Status500InternalServerError)

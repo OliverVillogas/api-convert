@@ -5,7 +5,7 @@ using ConvertAPI.Contexts.Converts.Domain.Services;
 
 namespace ConvertAPI.Contexts.Converts.Application.QueryServices;
 
-public class ConvertQueryService(IConvertRepository repository) 
+public class ConvertQueryService(IConvertRepository repository)
     : IConvertQueryService
 {
     public async Task<IEnumerable<ConvertEntity>> Handle(GetAllConverts query)
