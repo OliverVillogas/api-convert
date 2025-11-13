@@ -60,21 +60,18 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // Swagger
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Convert API v1");
-        options.RoutePrefix = "swagger";
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Convert API v1");
+    options.RoutePrefix = "swagger";
 
-        options.DocumentTitle = "Convert API Documentation";
-        options.DisplayRequestDuration();
-        options.EnableDeepLinking();
-        options.EnableFilter();
-        options.ShowExtensions();
-    });
-}
+    options.DocumentTitle = "Convert API Documentation";
+    options.DisplayRequestDuration();
+    options.EnableDeepLinking();
+    options.EnableFilter();
+    options.ShowExtensions();
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
