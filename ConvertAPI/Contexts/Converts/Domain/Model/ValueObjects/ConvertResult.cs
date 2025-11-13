@@ -13,7 +13,7 @@ public record ConvertResult
             throw new ArgumentException("Kilograms must be positive", nameof(kilograms));
 
         Kilograms = kilograms;
-        Pounds = Math.Round(kilograms * KilogramsToPoundsRate, 2);
+        Pounds = kilograms * KilogramsToPoundsRate;
     }
 
     public double Kilograms { get; init; }

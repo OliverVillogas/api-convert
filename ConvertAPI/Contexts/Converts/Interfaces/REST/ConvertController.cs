@@ -24,7 +24,7 @@ public class ConvertController(
     ///     POST /convert
     ///     { "kilograms": 10 }
     ///     Response:
-    ///     { "kilograms": 10, "pounds": 22.05 }
+    ///     { "kilograms": 10, "pounds": 22.0462 }
     /// </remarks>
     [HttpPost]
     [ProducesResponseType(typeof(ConvertResource), StatusCodes.Status200OK)]
