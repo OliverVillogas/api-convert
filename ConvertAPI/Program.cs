@@ -5,6 +5,7 @@ using ConvertAPI.Contexts.Converts.Domain.Repositories;
 using ConvertAPI.Contexts.Converts.Domain.Services;
 using ConvertAPI.Contexts.Converts.Infrastructure.Repositories;
 using ConvertAPI.Contexts.Shared.Domain.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +23,12 @@ builder.Services.AddCors(options =>
 });
 
 // Controllers with Exception Filter
-builder.Services.AddControllers(options => { options.Filters.Add<ConvertExceptionFilter>(); });
+builder.Services.AddControllers(options => { options.Filters.Add<ConvertExceptionFilter>(); })
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+            new BadRequestObjectResult(new { message = "Invalid request data." });
+    });
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

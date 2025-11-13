@@ -31,6 +31,8 @@ public class ConvertController(
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Convert([FromBody] CreateConvertResource? resource)
     {
+        if (resource == null)
+            return BadRequest(new { message = "Request body is required." });
         var command = ConvertResourceAssembler.ToCommandFromResource(resource);
         var convert = await commandService.Handle(command);
         var response = ConvertResourceAssembler.ToResourceFromEntity(convert);
